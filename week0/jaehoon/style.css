@@ -1,0 +1,110 @@
+* {
+    margin : 0;
+    padding : 0;
+}
+
+div {
+    border : 1px solid black;
+}
+
+html, body{
+    height: 100%;
+    width:  100%;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+}
+
+.up {
+    width: 100%;
+    height: 5%;
+    background-color: white;
+}
+
+.left {
+    width : 40%;
+    height: 75%;
+    background-color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items : center;
+}
+
+.profile_img {
+    width : 60%;
+    height : 60%;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.profile_img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.right {
+    width: 59%;
+    height: 75%;
+    background-color: white;
+    
+    display: flex;
+    justify-content: center;
+    align-items : center;
+}
+
+.personal_data{
+    width : 70%;
+    height : 50%;
+
+    display: flex;
+    flex-direction : column;
+    justify-content: center;
+    align-items: center;
+}
+
+.personal_data .name{
+    width : 100%;
+    height : 40%;
+    font: normal normal bold 3.5vw NanumSquare;
+}
+
+.personal_data .info{
+    width : 100%;
+    height : 25%;
+    font: normal normal normal 2vw NanumSquare;
+}
+
+.down {
+    width: 100%;
+    height: 20%;
+    background-color: white;
+    border-top: 10px solid orange;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.down .url{
+    width: 45%;
+    height: 49%;
+
+    font: normal normal normal 2vw Arial;
+    color: black;
+
+    display: flex;
+    justify-content: center;
+    align-items : center;
+}
+
+.down .url a{
+    text-decoration:none;
+    color: black;
+    padding-left: 15px
+}
