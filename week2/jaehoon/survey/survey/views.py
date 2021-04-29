@@ -15,7 +15,8 @@ class SurveyView(FormView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['ques'] = str(self.survey)
+        context['survey_idx'], context['ques'], context['ans1'], context['ans2'], context['ans3'], context['ans4'] = str(self.survey).split(", ")
+        context['survey_idx'] = context['survey_idx'][-1]
         return context 
 
     def form_valid(self, form):

@@ -10,7 +10,7 @@ class Survey(models.Model):
     status = models.CharField(max_length=1, default='y')
 
     def __str__(self):
-        return f"survey_idx : {self.idx}  질문 : {self.question} \n ans1 : {self.ans1}, ans2 : {self.ans2}, ans3 : {self.ans3}, ans4 : {self.ans4} "
+        return f"survey_idx : {self.idx},  질문 : {self.question}, ans1 : {self.ans1}, ans2 : {self.ans2}, ans3 : {self.ans3}, ans4 : {self.ans4} "
 
     class Meta :
         db_table = 'survey_table'
