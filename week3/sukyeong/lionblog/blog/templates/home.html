@@ -1,21 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BLOG</title>
-    <style>
-        body {text-align: center;}
-    </style>
-</head>
-<body>
-    
-</body>
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+    안녕하세요 {{user.location}}에 사는 {{user.nickname}}님
+    {% endif %}
     <h1>Blog Project</h1>
-    <div>
-        <a href="{%url 'new'%}">write blog</a>
-    </div>
     <div class="container">
         {% for blog in blogs %}
             <div>
@@ -26,4 +15,18 @@
             </div>
         {% endfor %}
     </div>
-</html>
+    {% if blogs.has_previous %}
+    <a href="?page=1">처음</a>
+    <a href="?page={{blogs.previous_page_number}}">이전글</a>
+    {% endif %}
+
+    <span>{{blogs.number}}</span>
+    <span>of</span>
+    <span>{{blogs.paginator.num_pages}}</span>
+
+    {% if blogs.has_next %}
+    <a href="?page={{blogs.next_page_number}}">다음글</a>
+    <a href="?page={{blogs.paginator.num_pages}}">마지막</a>
+    {% endif %}
+
+{% endblock %}

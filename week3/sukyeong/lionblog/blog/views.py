@@ -1,12 +1,17 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Blog
 from django.utils import timezone
+from .forms import BlogForm
+from django.core.paginator import Paginator
 
 # Create your views here.
 
 
 def home(request):
     blogs = Blog.objects.all()
+    paginator = Paginator(blogs, 3)
+    page = request.GET.get('page')
+    blogs = paginator.get_page(page)
     return render(request, 'home.html', {'blogs': blogs})
 
 
@@ -16,17 +21,18 @@ def detail(request, id):
 
 
 def new(request):
-    return render(request, 'new.html')
+    form = BlogForm()
+    return render(request, 'new.html', {'form': form})
 
 
 def create(request):
-    new_blog = Blog()
-    new_blog.title = request.POST['title']
-    new_blog.writer = request.POST['writer']
-    new_blog.body = request.POST['body']
-    new_blog.pub_date = timezone.now()
-    new_blog.save()
-    return redirect('detail', new_blog.id)
+    form = BlogForm(request.POST, request.FILES)
+    if form.is_valid():
+        new_blog = form.save(commit=False)
+        new_blog.pub_date = timezone.now()
+        new_blog.save()
+        return redirect('detail', new_blog.id)
+    return redirect('home')
 
 
 def edit(request, id):
