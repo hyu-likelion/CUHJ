@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+</head>
+<style>
+    #wrap {
+        width: 550px;
+        margin: auto;
+    }
+    .sub{
+        font-size: 30px;
+    }
+</style>
+<body>
+<div id="wrap">
+    <p>{{ques}}</p>
+    <p>{{ans1}}</p>
+    <p>{{ans2}}</p>
+    <p>{{ans3}}</p>
+    <p>{{ans4}}</p>
+    <form method = "POST" action = ".">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class = "form-group">
+                <label for = "{{field.id_for_label}}">{{field.label}}</label>
+                {{field}}
+            </div>
+
+            {% if field.errors %}
+            <span style = "color:red">{{field.errors}}</span>
+            {% endif %}
+            
+            {% endfor %}
+            <button type = "submit" class = "btn btn-primary">입력완료</button>
+        </form>
+    <a href="answer/{{survey_idx}}">결과확인</a>
+</div>
+</body>
+</html>
