@@ -1,7 +1,0 @@
-<h1>Update Your Todo</h1>
-
-<form action="{%url 'update' todo.id%}" method="POST">
-    {%csrf_token%}
-    <p>todo : <input type="text" name="todo" value="{{todo.todo}}"></p>
-    <button type="submit">submit</button>
-</form>
