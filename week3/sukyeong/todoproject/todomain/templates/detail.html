@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo-Detail</title>
+    <style>
+        body {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .edittodo {
+            margin-top: 80px;
+            font-size: 17px;
+            text-decoration: none;
+            color: rgb(73, 73, 73);
+        }
+
+    </style>
+</head>
+<body>
+    <h1>{{todo.title}}<h1>
+    <hr style="width: 400px">
+    <h4>{{todo.expiration_date}}까지 완료해주세요</h4>
+
+    <h4>{{todo.body}}</h4>
+    <a class="edittodo" href="{%url 'edit' todo.id%}">수정하기</a>
+    
+</body>
+</html>

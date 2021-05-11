@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Todo=List</title>
+        <style>
+            body {
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .container {
+                width: 300px;
+                height: 500px;
+                background-color: rgb(185, 185, 185);
+                border-radius: 10px;
+                display: inline-block;
+                margin-left: auto;
+                margin-right: auto;
+                padding-top: 25px;
+            }
+            .todo {
+                margin: 15px;
+            }
+
+            a {
+                font-size: small;
+                text-decoration: none;
+                margin: 2px;
+                color: rgb(73, 73, 73);
+            }
+
+            .newtodo {
+                margin-top: 15px;
+                font-size: 17px;
+                text-decoration: none;
+                color: rgb(73, 73, 73);
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Don't Forget!</h1>
+        <div class="container">
+            {% for todo in todos %}
+            <div>
+                <span class="todo">{{todo.title}}</span>
+                <a href="{% url 'detail' todo.id %}">더 보기</a>
+                <a href="{%url 'delete' todo.id%}">완료</a>
+                <br />
+                <br />
+            </div>
+            {% endfor %}
+        </div>
+        <a class="newtodo" href="{% url 'new' %}">추가하기</a>
+    </body>
+</html>
